@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Text and Generate Link</title>
+</head>
+<body>
+    <h1>Test Web Page for Highlighting Text</h1>
+    <p>Select some text on this page to generate a link with your selection.</p>
+    <p id="sampleText">This is some sample text. You can select part of this sentence or the whole paragraph.</p>
+
+    <button onclick="generateHighlightLink()">Generate Link with Highlight</button>
+
+    <p id="generatedLink"></p>
+
+    <script>
+        function generateHighlightLink() {
+            const selection = window.getSelection();  // Get the selected text
+
+            if (selection.rangeCount > 0) {
+                const selectedText = selection.toString();  // Get the selected text
+                if (selectedText.length > 0) {
+                    const range = selection.getRangeAt(0);  // Get the range of the selection
+
+                    // Create a link with the selected text and the URL
+                    const link = document.createElement('a');
+                    const url = window.location.href;  // Get the current page URL
+                    const linkText = `${url}#:~:text=${encodeURIComponent(selectedText)}`;
+                    link.href = linkText;
+                    link.innerText = 'Click to visit the link with the highlighted text';
+                    
+                    // Show the generated link below the button
+                    document.getElementById('generatedLink').innerHTML = '';  // Clear previous link
+                    document.getElementById('generatedLink').appendChild(link);
+                }
+            } else {
+                alert('Please select some text first.');
+            }
+        }
+    </script>
+</body>
+</html>
