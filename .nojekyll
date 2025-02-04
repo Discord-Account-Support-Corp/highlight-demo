@@ -6,7 +6,7 @@
     <title>Highlight Text and Generate Link</title>
 </head>
 <body>
-    <h1>Test Web Page for Highlighting Text</h1>
+    <h1>No Testing</h1>
     <p>Select some text on this page to generate a link with your selection.</p>
     <p id="sampleText">This is some sample text. You can select part of this sentence or the whole paragraph.</p>
 
